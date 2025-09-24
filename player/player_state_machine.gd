@@ -37,4 +37,5 @@ func _unhandled_input(event: InputEvent) -> void:
 		_change_state("attack")
 		return
 
-	current_state.handle_input(event)
+	if current_state:
+		current_state.handle_input(event)

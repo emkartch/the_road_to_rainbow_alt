@@ -2,8 +2,9 @@ extends "res://state_machine/state.gd"
 # Collection of important methods to handle direction and animation.
 
 func handle_input(event: InputEvent) -> void:
-	if event.is_action_pressed("simulate_damage"):
-		finished.emit("stagger")
+	#if event.is_action_pressed("simulate_damage"):
+	#	finished.emit("stagger")
+	pass
 
 
 func get_input_direction() -> Vector2:

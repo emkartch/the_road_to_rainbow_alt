@@ -59,7 +59,7 @@ libraries = {
 }
 
 [node name="AnimatedSprite2D" parent="Player/BodyPivot" index="0"]
-animation = &"idle_forward"
+animation = &"walk_backward"
 
 [node name="Path2D" type="Path2D" parent="Player"]
 curve = SubResource("Curve2D_lquwl")

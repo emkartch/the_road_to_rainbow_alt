@@ -4,11 +4,17 @@ var knockback = Vector2(10,10)
 
 var last_input_direction = Vector2(0.0,1.0)
 
-@onready var animatedSprite = get_node("/root/Main/Player/BodyPivot/AnimatedSprite2D")
+@onready var animatedSprite: AnimatedSprite2D = get_node("/root/Main/Player/BodyPivot/AnimatedSprite2D")
 
 var level_count = 1
 
 func direction_animation_update(type: String):
+	
+	
+	print('function called')
+
+	print ("current playing: " + animatedSprite.animation)
+
 	if last_input_direction == Vector2(0.0,-1.0):
 		animatedSprite.play(type + "_backward")
 	#down

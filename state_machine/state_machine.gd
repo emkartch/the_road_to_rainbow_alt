@@ -27,8 +27,10 @@ func _enter_tree() -> void:
 		var err: bool = child.finished.connect(_change_state)
 		if err:
 			printerr(err)
+	call_deferred("_call_start_state")
+	 
+func _call_start_state():
 	initialize(start_state)
-
 
 func initialize(initial_state: NodePath) -> void:
 	_active = true
@@ -50,7 +52,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	current_state.update(delta)
+	if current_state:
+		current_state.update(delta)
 
 
 func _on_animation_finished(anim_name: String) -> void:
