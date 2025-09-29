@@ -34,12 +34,14 @@ func set_dead(value: bool) -> void:
 func set_look_direction(value: Vector2) -> void:
 	direction_changed.emit(value)
 
-func _on_body_entered(body: CharacterBody2D) -> void:
+#func _on_body_entered(body: CharacterBody2D) -> void:
+func _on_body_entered(body) -> void:
 	if body == self:
 		return
-	health -= 10
-	Global.direction_animation_update("stagger")
-	%HealthBar.value = health
-	if health <= 0.0:
-		hide() # Player disappears after being hit.
-		health_depleted.emit()
+	if body is CharacterBody2D:
+		health -= 10
+		Global.direction_animation_update("stagger")
+		%HealthBar.value = health
+		if health <= 0.0:
+			hide() # Player disappears after being hit.
+			health_depleted.emit()

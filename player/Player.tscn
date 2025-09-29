@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://i4jm6sckeneh"]
+[gd_scene load_steps=72 format=3 uid="uid://i4jm6sckeneh"]
 
 [ext_resource type="Script" uid="uid://clya0ymtv6cnn" path="res://player/player_controller.gd" id="1"]
 [ext_resource type="Script" uid="uid://bt4prj2loisak" path="res://player/player_state_machine.gd" id="2"]
@@ -448,6 +448,9 @@ script/source = "extends AnimatedSprite2D
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ebec5"]
 bg_color = Color(0.262643, 0.702466, 0.369465, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d4g0h"]
+size = Vector2(1301, 745)
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1")
 
@@ -533,6 +536,23 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_ebec5")
 value = 100.0
 fill_mode = 1
 show_percentage = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CameraArea" type="Area2D" parent="Camera2D"]
+
+[node name="CameraVisible" type="CollisionShape2D" parent="Camera2D/CameraArea"]
+unique_name_in_owner = true
+position = Vector2(2.5, -0.5)
+shape = SubResource("RectangleShape2D_d4g0h")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+offset_left = -646.0
+offset_top = -370.0
+offset_right = 645.0
+offset_bottom = 368.0
+border_color = Color(1, 0, 0, 0)
+border_width = 0.0
 
 [connection signal="state_changed" from="StateMachine" to="BodyPivot/WeaponPivot/Offset/Sword" method="_on_StateMachine_state_changed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine" method="_on_animation_finished"]

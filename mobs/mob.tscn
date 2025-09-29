@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://cibuy1na4hurw"]
+[gd_scene load_steps=58 format=3 uid="uid://cibuy1na4hurw"]
 
 [ext_resource type="Texture2D" uid="uid://cyekm8csx33ng" path="res://mobs/mob_shadow.png" id="1_fgbma"]
 [ext_resource type="Script" uid="uid://cfdqudp47o2qw" path="res://mobs/mob.gd" id="1_p7hwu"]
@@ -15,27 +15,27 @@
 script/source = "extends Sprite2D
 "
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ioj85"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bh0fw"]
 atlas = ExtResource("4_bh0fw")
 region = Rect2(0, 256, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ytv2t"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qlem"]
 atlas = ExtResource("4_bh0fw")
 region = Rect2(128, 256, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8xr2h"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_f70jn"]
 atlas = ExtResource("4_bh0fw")
 region = Rect2(256, 256, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rvvv5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1a7i1"]
 atlas = ExtResource("4_bh0fw")
 region = Rect2(384, 256, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ugat2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dh1gf"]
 atlas = ExtResource("4_bh0fw")
 region = Rect2(512, 256, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lk7nx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0scjv"]
 atlas = ExtResource("4_bh0fw")
 region = Rect2(640, 256, 128, 128)
 
@@ -187,22 +187,22 @@ region = Rect2(640, 256, 128, 128)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ioj85")
+"texture": SubResource("AtlasTexture_bh0fw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ytv2t")
+"texture": SubResource("AtlasTexture_4qlem")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8xr2h")
+"texture": SubResource("AtlasTexture_f70jn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rvvv5")
+"texture": SubResource("AtlasTexture_1a7i1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ugat2")
+"texture": SubResource("AtlasTexture_dh1gf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lk7nx")
+"texture": SubResource("AtlasTexture_0scjv")
 }],
 "loop": true,
 "name": &"1_walk",
@@ -347,6 +347,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bh0fw"]
+size = Vector2(68, 50)
+
 [sub_resource type="Animation" id="Animation_fgbma"]
 resource_name = "mob_stagger"
 tracks/0/type = "value"
@@ -384,14 +387,22 @@ position = Vector2(0, -22)
 texture = ExtResource("2_p7hwu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BodyPivot"]
+texture_filter = 1
+texture_repeat = 1
 position = Vector2(-2, -57)
 sprite_frames = SubResource("SpriteFrames_p7hwu")
-animation = &"7_walk"
+animation = &"1_walk"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(1, -6.99219)
 scale = Vector2(1.25, 1.60156)
 polygon = PackedVector2Array(-27, 11, -27, -21, 27, -21, 27, 11)
+
+[node name="Visible" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visible"]
+position = Vector2(1, -15)
+shape = SubResource("RectangleShape2D_bh0fw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

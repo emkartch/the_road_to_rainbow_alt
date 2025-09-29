@@ -1,8 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://dmn8nkpogiwsf"]
+[gd_scene load_steps=12 format=3 uid="uid://dmn8nkpogiwsf"]
 
 [ext_resource type="PackedScene" uid="uid://i4jm6sckeneh" path="res://player/Player.tscn" id="1_1bvp3"]
 [ext_resource type="Script" uid="uid://q8chan1e2n18" path="res://main.gd" id="1_lquwl"]
+[ext_resource type="Texture2D" uid="uid://cjam6rwymbgmu" path="res://tilemap/background/background 3/orig.png" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://ds8aae77ps3fc" path="res://hud.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://vaf8ya48h0sq" path="res://tilemap/tilemap.tscn" id="3_lquwl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(548.75, 650.125)
 
 [sub_resource type="Animation" id="1"]
 
@@ -36,15 +41,25 @@ _data = {
 }
 point_count = 5
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
-size = Vector2(1294, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
-size = Vector2(20, 786)
-
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_lquwl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -30
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("2_1bvp3")
+
+[node name="Tilemap" parent="." instance=ExtResource("3_lquwl")]
+
+[node name="Boss Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boss Area"]
+position = Vector2(2425.38, 1851)
+shape = SubResource("RectangleShape2D_lquwl")
 
 [node name="Player" parent="." instance=ExtResource("1_1bvp3")]
 position = Vector2(640, 400)
@@ -69,31 +84,12 @@ unique_name_in_owner = true
 position = Vector2(-640, -400)
 
 [node name="StartPosition" type="Marker2D" parent="."]
-position = Vector2(640, 360)
-
-[node name="InvisibleWalls" type="StaticBody2D" parent="."]
-visible = false
-collision_layer = 2
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="InvisibleWalls"]
-position = Vector2(646, 730)
-shape = SubResource("RectangleShape2D_lquwl")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWalls"]
-position = Vector2(637, -12)
-shape = SubResource("RectangleShape2D_lquwl")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="InvisibleWalls"]
-position = Vector2(-12, 385)
-shape = SubResource("RectangleShape2D_7mycd")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="InvisibleWalls"]
-position = Vector2(1292, 346)
-shape = SubResource("RectangleShape2D_7mycd")
+position = Vector2(751, 448)
 
 [node name="HUD" parent="." instance=ExtResource("3_h2yge")]
 
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 
+[editable path="Tilemap"]
 [editable path="Player"]

@@ -8,13 +8,10 @@ var last_input_direction = Vector2(0.0,1.0)
 
 var level_count = 1
 
+var active_collision = false
+
 func direction_animation_update(type: String):
 	
-	
-	print('function called')
-
-	print ("current playing: " + animatedSprite.animation)
-
 	if last_input_direction == Vector2(0.0,-1.0):
 		animatedSprite.play(type + "_backward")
 	#down
