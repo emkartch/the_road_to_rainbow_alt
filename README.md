@@ -31,6 +31,7 @@ This is the update to my game for the "Accessibility & UI/UX" assignment in ATLS
 **Note**: A lot of the implementation for the UI/UX elements was completed with the help of [Godot UI Basics - how to build beautiful interfaces that work everywhere (Beginners)](https://youtu.be/1_OFJLyqlXI?si=i0PrdQspzx-Za8Ee)
 
 10/4 - Iterate through ideas for UI/UX work and build the wireframe - 30 minutes
+- View the wireframe as a PNG labeled "Accessibility & UI/UX - Wireframe" in this repo
 
 10/4 - Create a theme for my UI/UX (Selecting a font, Reworking Retro Cloud Tileset to work as a panel frame, create settings and arrow icon, etc) - 60 minutes
 
