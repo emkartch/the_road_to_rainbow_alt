@@ -25,6 +25,27 @@ https://www.youtube.com/watch?v=GwCiGixlqiU
 
 *New Bug*: If you win, the message timer bugs and won't time out and reset play and I can't figure out why
 
+----------------------------------------------------------------------------------------------------------
+This is the update to my game for the "Accessibility & UI/UX" assignment in ATLS 4140.
+
+**Note**: A lot of the implementation for the UI/UX elements was completed with the help of [Godot UI Basics - how to build beautiful interfaces that work everywhere (Beginners)](https://youtu.be/1_OFJLyqlXI?si=i0PrdQspzx-Za8Ee)
+
+10/4 - Iterate through ideas for UI/UX work and build the wireframe - 30 minutes
+
+10/4 - Create a theme for my UI/UX (Selecting a font, Reworking Retro Cloud Tileset to work as a panel frame, create settings and arrow icon, etc) - 60 minutes
+
+10/5 - Implement new theme into current HUD and add a settings button to title - 45 minutes
+
+10/5 - Move player health to UI, reposition it, add informational text, then reconnect it - 60 minutes
+
+10/6 - Fixed bug with message timer not timing out and resetting play after win - 45 minutes
+
+10/6 - Create settings page - 30 minutes
+
+10/6 - Connect settings buttons to pause the game and take the player to the settings - 45 minutes
+
+10/7 - Add theme overrides in code to allow for players to change between "normal" and large font size at will - 60 minutes
+
 Assets from:  
 - Free Sky Backgrounds by Free Game Assets (GUI, Sprite, Tilesets) - https://free-game-assets.itch.io/free-sky-with-clouds-background-pixel-art-set  
 - Retro Cloud Tileset by ohnoponogames - https://ohnoponogames.itch.io/retro-cloud-tileset    

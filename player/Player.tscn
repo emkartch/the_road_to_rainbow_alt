@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://i4jm6sckeneh"]
+[gd_scene load_steps=71 format=3 uid="uid://i4jm6sckeneh"]
 
 [ext_resource type="Script" uid="uid://clya0ymtv6cnn" path="res://player/player_controller.gd" id="1"]
 [ext_resource type="Script" uid="uid://bt4prj2loisak" path="res://player/player_state_machine.gd" id="2"]
@@ -445,9 +445,6 @@ animations = [{
 script/source = "extends AnimatedSprite2D
 "
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ebec5"]
-bg_color = Color(0.262643, 0.702466, 0.369465, 1)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d4g0h"]
 size = Vector2(1301, 745)
 
@@ -518,24 +515,6 @@ polygon = PackedVector2Array(-27, 14.831, -27, -21, 27, -21, 27, 14.831)
 position = Vector2(1.5, -9.129)
 scale = Vector2(2.00231, 2.38969)
 polygon = PackedVector2Array(-27, 14.831, -27, -21, 27, -21, 27, 14.831)
-
-[node name="HealthBar" type="ProgressBar" parent="."]
-unique_name_in_owner = true
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -130.0
-offset_right = 50.0
-offset_bottom = -105.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/fill = SubResource("StyleBoxFlat_ebec5")
-value = 100.0
-fill_mode = 1
-show_percentage = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

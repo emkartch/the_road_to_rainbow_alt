@@ -11,6 +11,8 @@ var health = 100.0
 @onready var main = get_node("/root/Main")
 @onready var state_machine = get_node("/root/Main/Player/StateMachine")
 @onready var animatedSprite = get_node("/root/Main/Player/BodyPivot/AnimatedSprite2D")
+@onready var healthBar = get_node("/root/Main/HUD/InLevel/HealthBar")
+@onready var healthBarText = get_node("/root/Main/HUD/InLevel/HealthBar/HealthLabel")
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -41,7 +43,8 @@ func _on_body_entered(body) -> void:
 	if body is CharacterBody2D:
 		health -= 10
 		Global.direction_animation_update("stagger")
-		%HealthBar.value = health
+		healthBar.value = health
+		healthBarText.text = str(int(health)) + "/" + str(int(Global.max_player_health))
 		if health <= 0.0:
 			hide() # Player disappears after being hit.
 			health_depleted.emit()

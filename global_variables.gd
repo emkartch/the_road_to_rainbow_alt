@@ -10,6 +10,10 @@ var level_count = 1
 
 var active_collision = false
 
+var max_player_health = 100.0
+
+var main_game_running = false
+
 func direction_animation_update(type: String):
 	
 	if last_input_direction == Vector2(0.0,-1.0):
