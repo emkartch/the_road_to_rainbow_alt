@@ -3,23 +3,27 @@ extends CanvasLayer
 # Notifies `Main` node that the button has been pressed
 signal start_game
 
-@onready var tileMap = get_node("/root/Main/Tilemap")
+@onready var main = get_node("/root/Main")
 @onready var theme = preload("res://theme/trtr_theme.tres")
 
-#var titleText = "The Road to Rainbow"
+var tileMap = null
+
 func _ready():
 	$InLevel.hide()
 	$Settings.hide()
-	tileMap.hide()
+	
+func level_remove():
+	print("removed")
+	tileMap.queue_free()
+	
+func level_reset():
+	tileMap = preload("res://tilemap/tilemap.tscn").instantiate()
+	main.set_tilemap(tileMap)
+	main.add_child(tileMap)
 
 func show_game_over():
 	$InLevel.hide()
-	tileMap.get_node("Clouds V1").enabled = false
-	tileMap.get_node("Clouds V2").enabled = false
-	tileMap.get_node("Clouds V3").enabled = false
-	tileMap.get_node("Clouds V4").enabled = false
-	tileMap.get_node("Levers").enabled = false
-	tileMap.get_node("Heart").enabled = false
+	level_remove()
 	show_message("Game Over")
 	# Wait until the MessageTimer has counted down.
 	await $MessageTimer.timeout
@@ -32,12 +36,7 @@ func show_game_over():
 	
 func show_win():
 	$InLevel.hide()
-	tileMap.get_node("Clouds V1").enabled = false
-	tileMap.get_node("Clouds V2").enabled = false
-	tileMap.get_node("Clouds V3").enabled = false
-	tileMap.get_node("Clouds V4").enabled = false
-	tileMap.get_node("Levers").enabled = false
-	tileMap.get_node("Heart").enabled = false
+	level_remove()
 	show_message("You win!")
 	
 	# Wait until the MessageTimer has counted down.
@@ -59,7 +58,10 @@ func _on_start_button_pressed() -> void:
 	$TitleButtonsContainer.hide()
 	%RainbowIcon.texture = load("res://rainbow_hud/rainbow_0.png")
 	$InLevel.show()
-	tileMap.show()
+	level_reset()
+	call_deferred("level_start")
+
+func level_start():
 	start_game.emit()
 
 func _on_message_timer_timeout() -> void:
@@ -86,10 +88,6 @@ func _on_return_icon_pressed() -> void:
 	get_tree().paused = false
 
 func _on_check_button_toggled(toggled_on: bool) -> void:
-	# needs overridded
-	# check button
-	# health label
-	# health bar
 	if toggled_on:
 		theme.set_font_size("font_size", "Label", 80)
 		theme.set_font_size("font_size", "Button", 60)

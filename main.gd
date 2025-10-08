@@ -9,9 +9,9 @@ var lever_number = 0
 @onready var player = get_node("/root/Main/Player")
 @onready var healthBar = get_node("/root/Main/HUD/InLevel/HealthBar")
 @onready var healthBarText = get_node("/root/Main/HUD/InLevel/HealthBar/HealthLabel")
-@onready var tileMap = get_node("/root/Main/Tilemap")
-@onready var tileMapLevers = get_node("/root/Main/Tilemap/Levers")
-@onready var tileMapHeart = get_node("/root/Main/Tilemap/Heart")
+var tileMap = null
+var tileMapLevers = null
+var tileMapHeart = null
 
 var tile_cell_size = Vector2(128,128)
 
@@ -84,6 +84,11 @@ func _on_player_health_depleted():
 	get_tree().call_group("mobs", "queue_free")
 	Global.main_game_running = false
 	$HUD.show_game_over()
+
+func set_tilemap(map: Node2D):
+	tileMap = map
+	tileMapLevers = tileMap.get_node("Levers")
+	tileMapHeart = tileMap.get_node("Heart")
 
 func new_game() -> void:
 	player.health = Global.max_player_health
