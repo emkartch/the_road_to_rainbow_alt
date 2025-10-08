@@ -2,8 +2,6 @@ extends Node
 
 var boss_level = false
 
-var lever_number = 0
-
 @onready var hud = get_node("/root/Main/HUD")
 @onready var rainbow = get_node("/root/Main/HUD/InLevel/RainbowIcon")
 @onready var player = get_node("/root/Main/Player")
@@ -36,23 +34,23 @@ func _process(delta: float) -> void:
 		for object in interactive_collision:
 			if object.name == "Levers":
 				if Input.is_action_just_pressed("interact"):
-					if lever_number == 0:
+					if Global.lever_number == 0:
 						tileMapLevers.set_cell(Vector2i(5,6),1,Vector2i(0,1))
 						tileMap.get_node("Clouds V1").enabled = false
 						tileMap.get_node("Clouds V2").enabled = true
-						lever_number += 1
+						Global.lever_number += 1
 						return
-					elif lever_number == 1:
+					elif Global.lever_number == 1:
 						tileMapLevers.set_cell(Vector2i(16,2),1,Vector2i(0,1))
 						tileMap.get_node("Clouds V2").enabled = false
 						tileMap.get_node("Clouds V3").enabled = true
-						lever_number += 1
+						Global.lever_number += 1
 						return
-					elif lever_number == 2:
+					elif Global.lever_number == 2:
 						tileMapLevers.set_cell(Vector2i(11,12),1,Vector2i(0,1))
 						tileMap.get_node("Clouds V3").enabled = false
 						tileMap.get_node("Clouds V4").enabled = true
-						lever_number += 1
+						Global.lever_number += 1
 						return
 			if object.name == "Heart":
 				tileMapHeart.erase_cell(Vector2i(4,11))

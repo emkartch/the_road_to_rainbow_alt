@@ -13,7 +13,6 @@ func _ready():
 	$Settings.hide()
 	
 func level_remove():
-	print("removed")
 	tileMap.queue_free()
 	
 func level_reset():
@@ -23,6 +22,7 @@ func level_reset():
 
 func show_game_over():
 	$InLevel.hide()
+	Global.lever_number = 0
 	level_remove()
 	show_message("Game Over")
 	# Wait until the MessageTimer has counted down.
@@ -36,6 +36,7 @@ func show_game_over():
 	
 func show_win():
 	$InLevel.hide()
+	Global.lever_number = 0
 	level_remove()
 	show_message("You win!")
 	
