@@ -48,5 +48,8 @@ This is the update to my game for the "Accessibility & UI/UX" assignment in ATLS
 10/7 - Add theme overrides in code to allow for players to change between "normal" and large font size at will - 60 minutes
 
 Assets from:  
+- Godot Demo Projects Repo - https://github.com/godotengine/godot-demo-projects/tree/master  
+- Hana Caraka (Base Character) by Otterisk - https://otterisk.itch.io/hana-caraka-base-character#google_vignette  
+- Slime Animation Pack by Virusystem - https://virusystem.itch.io/slime-pack-anmations  
 - Free Sky Backgrounds by Free Game Assets (GUI, Sprite, Tilesets) - https://free-game-assets.itch.io/free-sky-with-clouds-background-pixel-art-set  
 - Retro Cloud Tileset by ohnoponogames - https://ohnoponogames.itch.io/retro-cloud-tileset    
